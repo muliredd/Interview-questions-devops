@@ -1,0 +1,6 @@
+1. How to establish cross account s3 cominucation? we can achive with arn vaules in the IAM policies
+2. What do you understand cloudwatch alarms and cloudwatch events?
+3. If i want to connect ec2 with s3 bucket but i dont want to use internet gateway and nat gateway, how will you establish?
+  A: To enable EC2 in a private subnet to access S3 without using an Internet Gateway or NAT Gateway, I create a VPC Gateway Endpoint for S3. This allows private,
+      internal communication between EC2 and S3 completely over the AWS network, without exposing traffic to the public internet.
+4. 
