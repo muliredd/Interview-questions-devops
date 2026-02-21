@@ -15,4 +15,42 @@ A:  i. VPC Peering is non‑transitive
 5.what is use of coreDNS in k8?
 A: CoreDNS is the DNS server used by Kubernetes to provide internal service discovery.
     It allows Pods and Services to communicate with each other using DNS names instead of IP addresses, which is critical because Pod IPs are dynamic.
-6.
+6. There are 2 ec2 instances 1 is application is there and 2nd one DB is there,
+comminucaton bwn them what type of issues will you faced and solved them?
+A:
+7.If you application is failing again and again in k8, how will you troubleshoot it? cause of livinees and redines and diff bwn two?
+A:
+8.waht type of security you will take during s3 bucket creation and permistion granting?
+9.where due you utilized tereform?
+10.how can you manage or  practive follow creds in terraform?
+A: we can use aws secret manager or  hashivault and using terraform varibles or kms
+11:what kind of condtions you will use in terraform?
+A: for and foreach 
+12.In which kind of resource creation you utilize the foreach block?
+13.why we use datablock in terraform?
+14. What kind of best practice will follow while implimeting the Dockerfile?
+15.what is diff CMD vs Entrypoint?
+16.what is userdata in aws? A: we use for software instalion on ec2
+17.what kind of subnets you utilized and diffence bwn them?
+18:How can you achive communtion bwn 3 vpcs?
+19.If you have 60 applciation to deploy using jenkins, how can you reduse the time of deployment?
+A: Shared libs
+20.If you have DNS as abc.com when ever user hits it it should come to other domanin name like flipkart.com how can you achive it?
+A: we can achive it by Route53 by creating records.
+21.What kind of utilization you are doing with sonarcube?
+22.what kind starty you use in terraform if new user requirment comes without effecting existing resources? A: we can use workspaces.
+23.which cmd you utilize to check the terraform plan? 
+24.when you run teraform init cmd what happens?
+25.How do you manage creds in jenkins?
+26.If you have 10 micros application how can you deploy using jenkins 1 by 1 or parallel, how you will achive?
+27.what are the diffrent stages in your jenkins pipeine?
+28.How you your jenkins pipeline is conncted to openshift?
+29.what kind of best practices will apply regading security?
+30.did you worked on cost optimization? Lamda utilization.
+40.My web application is running fine but images in apllication is not loading they are stored in s3 bucket, how can you trobleshoot it?
+41.Crontab?
+42.What cmd you will use to create directory in Dockerfile? A: run cmd
+43.What are the chalenges you faced day to day?
+44.How can you connect to privite ec2 instace? A: use jump host or build servers with transit gateway
+45.
+
