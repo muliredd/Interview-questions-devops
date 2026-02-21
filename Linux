@@ -1,3 +1,7 @@
 1.File permistions
 2.ping vs grep vs ps -ef
-3.
+1.what cmd you will to check what are the services are running currently? A: Top, ps -ef
+2. if you want to calculate cpu utilization of interval of 15 min how will you do it?
+3.How can you roatate the log files if they are full?
+A: we have etc/logrotate file or script by proiding condition.
+
