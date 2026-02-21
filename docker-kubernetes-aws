@@ -1,0 +1,18 @@
+docker-kubernetes
+-----------------------
+1.we have mulitiple nodes in our env if you want to go for MM mode for one of the node what option you will choose Drain or Codeon and why you are going to selct which one?
+A: Drain
+2.With the namesapce who pods will comminucate iwth eather other?
+A: pods cant commonicate with eachother bcz ips of pods are shor lived. Through service only it will comminucate.
+3. what kind of Domain recods we have and what are they?
+A: DNS Records (General)A, AAAA, CNAME, MX, TXT, NS, SRV, PTR
+4. what are the diff VPC peering limtation?
+A:  i. VPC Peering is non‑transitive
+      If VPC‑A ↔ VPC‑B and VPC‑B ↔ VPC‑C,
+      A cannot talk to C unless you explicitly create A ↔ C peering.
+    2.VPCs must have non‑overlapping CIDR blocks
+    3.Peering is for direct 1‑to‑1 connectivity only
+5.what is use of coreDNS in k8?
+A: CoreDNS is the DNS server used by Kubernetes to provide internal service discovery.
+    It allows Pods and Services to communicate with each other using DNS names instead of IP addresses, which is critical because Pod IPs are dynamic.
+6.
