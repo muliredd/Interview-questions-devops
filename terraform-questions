@@ -1,0 +1,100 @@
+1.Explain the role of providers, resources, data sources, variables, locals, and outputs.
+Provider: plugin that talks to an API (e.g., hashicorp/aws).
+Resource: creates/updates infra.
+Data source: reads existing data (no changes).
+Variables/locals: inputs & computed helpers.
+Outputs: export values for calling modules/CI.
+
+2.count vs for_each—when and why?
+count uses index-based addressing; changes in order can force recreation.
+for_each uses stable keys; safer for sets/maps; better lifecycle stability.
+
+COunt EXP:
+variable "instance_count" {
+  type    = number
+  default = 3
+}
+
+resource "aws_instance" "web" {
+  count         = var.instance_count
+  ami           = var.ami
+  instance_type = "t3.micro"
+  tags = {
+    Role = "web"
+    Index = count.index
+  }
+}
+
+For-each EXP:
+
+
+3.What do depends_on, lifecycle, and dynamic blocks do
+depends_on, lifecycle, and dynamic are powerful constructs that control ordering, create/update/delete behavior, 
+and programmatic generation of nested blocks
+
+4.How do you manage state in teams?
+Use remote backends (S3 + DynamoDB locking, Azure Storage + blob lease).
+Enable state locking and versioning.
+Use workspaces for environments cautiously (or prefer env-based directories/repositories).
+
+5.Q7. Explain terraform import vs the new import block (1.5+).
+Answer guide:
+
+Legacy terraform import maps a remote object to state only.
+Import blocks in config declare desired mapping in code, making imports reviewable and repeatable.
+
+Q8. What are moved blocks used for?
+Answer guide:
+
+Refactors: rename/move resources/modules without recreation, keeping state continuity.
+
+
+
+Usecase: 
+TErraform to create AWS s3 buckets we use vault to get it authenticate
+Terraform to take backup/snapshaot to RDS Instance
+
+terraform init -upgrade (refresh providers)
+terraform plan -out plan.tfplan & terraform apply plan.tfplan
+terraform refresh / -refresh-only
+terraform state mv, state rm
+-lock, -lock-timeout, -parallelism
+-var-file, TF_VAR_, *.auto.tfvars
+terraform fmt -check, validate
+terraform graph to visualize dependencies
+
+
+create workspace ---> terraform workspace new <envname>
+switch workspace --->terraform workspace select <envname>
+delte workspace ---->terraform workspace delete <envname>
+list worksoace ----->terraform workspace list
+show workspace ------>terraform workspace show
+
+
+Q.How can we create statefiles in s3 bucket
+
+1.bucket-name: mycompany-terraform-state
+
+2.Create a file named backend.tf:
+
+terraform {
+  backend "s3" {
+    bucket         = "mycompany-terraform-state"   # Your S3 bucket
+    key            = "prod/network/terraform.tfstate"  # Path inside bucket
+    region         = "ap-south-1"
+    dynamodb_table = "terraform-locks"             # For locking
+    encrypt        = true                           # Encrypt state at rest (SSE-S3/KMS)
+  }
+}
+
+Folder structure:
+------------------
+environments/
+  dev/
+    backend.tf
+  stage/
+    backend.tf
+  prod/
+    backend.tf
+
+
